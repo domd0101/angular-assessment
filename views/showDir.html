@@ -1,0 +1,34 @@
+<div class='shopDir'>
+<section class="lede section--padding-both">
+    <div class="container">
+        <p>Shop Page</p>
+        {{shop}}
+    </div>
+</section>
+
+<div ng-repeat='shop in shopData' class="product-grid__item   grid__item one-half large--one-third" >
+
+    <!--Repeat over your data and display it below -->
+    <a class="product-grid__product" >
+        <img ng-show="showDetails" ng-src='{{shop.image}}' class="product-grid__img"   sizes="(min-width: 960px) 33vw, (min-width: 769px) 50vw, 100vw" alt="">
+    </a>
+    <a ng-click="showDetails = ! showDetails" class="product-grid__product">
+        Show Image
+    </a>
+      <!--Product Meta-->
+      <div  class="product-grid__meta">
+          <!--Title click Should redirect to the product-details section. remember to pass along the product id so you can make an api call
+      to get the specific product details-->
+          <h3 ng-controller='productDetailsCtrl' class="product-grid__name">
+            <a ui-sref="details" ng-click="getById(shop.id)" > {{shop.title}} </a>
+          </h3>
+
+          <!--Product Description-->
+          <h4 class="product-grid__sub">{{shop.desc}}<!--Desc--></h4>
+
+          <!--Product Price-->
+          <div class="product-grid__price">{{shop.price}}<!--Price--></div>
+      </div>
+
+</div>
+</div>
